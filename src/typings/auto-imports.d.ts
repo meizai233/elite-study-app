@@ -85,6 +85,7 @@ declare global {
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useSlots: typeof import('vue')['useSlots']
+  const useToast: typeof import('../composables/toast')['useToast']
   const useUser: typeof import('../composables/user')['useUser']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
