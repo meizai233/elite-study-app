@@ -5,6 +5,9 @@ import XGraphicCaptcha from "@/components/Form/XGraphicCaptcha.vue";
 import XCaptcha from "@/components/Form/XCaptcha.vue";
 import XButton from "@/components/Form/XButton.vue";
 
+import { register } from "@/api/user";
+import type { XCaptchaMethod } from "@/typings/components";
+
 // 初始化变量
 const formData = $ref({
   code: "", // 短信验证码
@@ -14,11 +17,26 @@ const formData = $ref({
   graphicCaptcha: "", // 图形验证码
 });
 
+const { base, success } = useToast();
+const { switchLoginState } = $(useUser());
+
+const xCaptcha = $ref<XCaptchaMethod>();
+
 // 注册按钮
 async function getRegister() {
-  /**
-   * 请求注册接口
-   */
+  const { code, msg, data } = await register({
+    code: formData.code,
+    phone: formData.account,
+  });
+  if (code !== 0) {
+    base(msg || "注册失败");
+    formData.graphicCaptcha = "";
+    xCaptcha?.changeCaptcha();
+  } else {
+    success(msg || "注册成功！");
+    // 更新登录状态
+    switchLoginState(data);
+  }
 }
 </script>
 

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import XInput from "./XInput.vue";
 import type { SendCodeType } from "@/typings/api";
+import { sendCode } from "@/api/user";
 
 const { formData, type } = defineProps<{
   send: boolean;
@@ -36,7 +37,7 @@ const countDownFun = function () {
   }, 1000);
 };
 
-const { base } = useToast();
+const { base, success } = useToast();
 
 // 点击获取验证码
 async function getCaptcha() {
@@ -45,9 +46,19 @@ async function getCaptcha() {
   } else if (!formData.account || !formData.graphicCaptcha) {
     base("请填写账号和图形验证码！");
   } else {
-    /**
-     * 发送接口请求
-     */
+    const { code, msg } = await sendCode({
+      type: type,
+      phone: formData.account,
+      captcha: formData.graphicCaptcha,
+    });
+    if (code !== 0) {
+      base(msg || "发送失败，请稍后重试！");
+    } else {
+      emit("update:send", true);
+      disabled = true;
+      countDownFun();
+      success("发送成功！");
+    }
   }
 }
 
