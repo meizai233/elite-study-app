@@ -61,6 +61,7 @@
     "@dcloudio/uni-stacktracey": "3.0.0-alpha-3061620221230002",
     "@dcloudio/vite-plugin-uni": "3.0.0-alpha-3061620221230002",
     "@vue/tsconfig": "^0.1.3",
+    "sass": "1.58.0",
     "typescript": "^4.9.4",
     "unocss": "0.49.4",
     "unocss-preset-weapp": "0.3.0",
