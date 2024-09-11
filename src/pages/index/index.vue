@@ -2,19 +2,18 @@
   <view class="content">
     <image class="logo" src="/static/logo.png" />
     <view class="text-area">
-      <text class="title">{{ title }}</text>
+      <text color-red text-30>{{ title }}</text>
     </view>
     <text @click="toAbout">去about页面</text>
   </view>
 </template>
 
 <script setup lang="ts">
-const title = ref('Hello')
+const title = ref("Hello");
 
 const toAbout = () => {
-  uni.navigateTo({ url: '/pages/about/index' })
-}
-
+  uni.navigateTo({ url: "/pages/about/index" });
+};
 </script>
 
 <style>
