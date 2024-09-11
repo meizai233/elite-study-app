@@ -4,16 +4,15 @@
     <view class="text-area">
       <text color-red text-30>{{ title }}</text>
     </view>
-    <text @click="toAbout">去about页面</text>
   </view>
 </template>
 
 <script setup lang="ts">
-const title = ref("Hello");
+let title = $ref("Hello");
 
-const toAbout = () => {
-  uni.navigateTo({ url: "/pages/about/index" });
-};
+onMounted(() => {
+  title = "优研平台";
+});
 </script>
 
 <style>
