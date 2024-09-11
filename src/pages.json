@@ -3,13 +3,25 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "首页"
+        "navigationStyle": "custom"
       }
     },
     {
-      "path": "pages/about/index",
+      "path": "pages/category/index",
       "style": {
-        "navigationBarTitleText": "关于"
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/study/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/mine/index",
+      "style": {
+        "navigationStyle": "custom"
       }
     }
   ],
